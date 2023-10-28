@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "armlab-f23"
+version = "0.1.0"
+description = ""
+authors = [""]
+readme = "README.md"
+
+# Freeze dependencies at ROS 2 Humble to avoid compatibility issues with system
+# packages. OpenCV is an exception -- the version shipped with Ubuntu 22.04
+# (4.5) does not play nicely with the Python language server. Since the OpenCV
+# API is relatively stable, we'll use a more recent version.
+# https://www.ros.org/reps/rep-2000.html#humble-hawksbill-may-2022-may-2027
+[tool.poetry.dependencies]
+python = "~3.10"
+numpy = "~1.21.5"
+opencv-python = "~4"
+pyqt5 = "~5.15.3"
+scipy = "~1.8.0"
+# From install_scripts/install_Dependencies.sh
+future = "^0.18.3"
+modern-robotics = "^1.1.1"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.1"
+black = "^23.9.1"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
